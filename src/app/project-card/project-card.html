@@ -1,0 +1,31 @@
+<article class="project">
+  <div class="meta">
+    <span class="number">{{ number() }}</span>
+    <span class="period">{{ project().period }}</span>
+    <span class="role">{{ project().role }}</span>
+  </div>
+
+  <div class="body">
+    <p class="kind">{{ project().kind }}</p>
+    <h3>{{ project().name }}</h3>
+    <p class="summary">{{ project().summary }}</p>
+
+    <ul class="highlights">
+      @for (highlight of project().highlights; track highlight) {
+        <li>{{ highlight }}</li>
+      }
+    </ul>
+
+    <ul class="chips" aria-label="Technologies">
+      @for (tech of project().stack; track tech) {
+        <li>{{ tech }}</li>
+      }
+    </ul>
+
+    @if (project().url; as url) {
+      <a class="link" [href]="url" target="_blank" rel="noopener">
+        {{ host() }} <span aria-hidden="true">↗</span>
+      </a>
+    }
+  </div>
+</article>

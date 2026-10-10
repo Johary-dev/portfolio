@@ -1,0 +1,103 @@
+<a class="skip" href="#projets">Aller au contenu</a>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top">{{ profile.name }}</a>
+    <nav aria-label="Navigation principale">
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button
+      type="button"
+      class="theme-toggle"
+      (click)="toggleTheme()"
+      [attr.aria-label]="theme() === 'dark' ? 'Passer au thème clair' : 'Passer au thème sombre'"
+    >
+      {{ theme() === 'dark' ? 'Clair' : 'Sombre' }}
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero container">
+    <p class="eyebrow">{{ profile.title }} · {{ profile.location }}</p>
+    <h1>{{ profile.name }}</h1>
+    <p class="tagline">{{ profile.tagline }}</p>
+    <div class="actions">
+      <a class="button primary" href="#projets">Voir les projets</a>
+      <a class="button" href="#contact">Me contacter</a>
+    </div>
+  </section>
+
+  <section class="container about" aria-labelledby="a-propos-titre">
+    <h2 id="a-propos-titre">À propos</h2>
+    <div class="about-text">
+      @for (paragraph of profile.about; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+    </div>
+  </section>
+
+  <section id="projets" class="container" aria-labelledby="projets-titre">
+    <h2 id="projets-titre">Projets professionnels</h2>
+    <p class="section-note">
+      Des produits réalisés en équipe. Le code de la plupart d'entre eux est privé : je décris ici
+      ce que j'y ai construit.
+    </p>
+    @for (project of projects; track project.name; let i = $index) {
+      <app-project-card [project]="project" [index]="i" />
+    }
+  </section>
+
+  @if (academicProjects.length) {
+    <section id="projets-academiques" class="container" aria-labelledby="academiques-titre">
+      <h2 id="academiques-titre">Projets académiques</h2>
+      <p class="section-note">
+        Des applications fonctionnelles réalisées pendant ma licence et mon master.
+      </p>
+      @for (project of academicProjects; track project.name; let i = $index) {
+        <app-project-card [project]="project" [index]="i" />
+      }
+    </section>
+  }
+
+  <section id="competences" class="container" aria-labelledby="competences-titre">
+    <h2 id="competences-titre">Compétences</h2>
+    <dl class="skills">
+      @for (group of skills; track group.label) {
+        <div class="skill-group">
+          <dt>{{ group.label }}</dt>
+          <dd>
+            <ul class="chips">
+              @for (item of group.items; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </dd>
+        </div>
+      }
+    </dl>
+  </section>
+
+  <section id="contact" class="container contact" aria-labelledby="contact-titre">
+    <h2 id="contact-titre">Contact</h2>
+    <p class="contact-lead">Un projet, un poste, une question ? Écrivez-moi.</p>
+    <a class="contact-mail" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+    @if (profile.github || profile.linkedin) {
+      <ul class="socials">
+        @if (profile.github) {
+          <li><a [href]="profile.github" target="_blank" rel="noopener">GitHub ↗</a></li>
+        }
+        @if (profile.linkedin) {
+          <li><a [href]="profile.linkedin" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        }
+      </ul>
+    }
+  </section>
+</main>
+
+<footer class="container footer">
+  <span>© {{ year }} {{ profile.name }}</span>
+  <span>Fait avec Angular</span>
+</footer>

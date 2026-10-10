@@ -82,15 +82,28 @@ export const PROJECTS: Project[] = [
     name: 'Console Twilio',
     kind: 'Back-office de téléphonie',
     period: '2025 — 2026',
-    role: 'Développeur front-end',
+    role: 'Développeur full-stack',
     summary:
       'Application d’administration reliée au CRM : numéros de téléphone, consommation d’appels et de SMS, facturation.',
     highlights: [
       'Écrans de facturation : factures, historique, statuts et export',
       'Statistiques globales avec filtre par intervalle de dates',
       'Durcissement de la session : expiration du jeton, déconnexion, retrait des données sensibles côté client',
+      'API REST Node.js : statistiques de facturation, gestion des numéros, modèles de données utilisateur',
+      'Authentification JWT et connexion depuis le CRM réservée aux super-administrateurs',
     ],
-    stack: ['Vue 3', 'TypeScript', 'Vuetify', 'Pinia', 'Chart.js', 'Socket.io'],
+    stack: [
+      'Vue 3',
+      'TypeScript',
+      'Vuetify',
+      'Pinia',
+      'Chart.js',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Twilio',
+      'Socket.io',
+    ],
   },
   {
     name: 'Kiizy',
@@ -141,33 +154,6 @@ export const PROJECTS: Project[] = [
 /** Projets académiques : la section reste masquée tant que la liste est vide. */
 export const ACADEMIC_PROJECTS: Project[] = [
   {
-    name: 'Dikanteniko',
-    kind: 'Plateforme de gestion de traductions',
-    period: '2023 — 2025',
-    role: 'Projet de soutenance de licence',
-    summary:
-      'Application web pour traduire un produit à plusieurs : projets, langues, contributeurs, rôles et suivi des traductions.',
-    highlights: [
-      'Projets de traduction, langues de référence et invitation de contributeurs',
-      'Table de traductions éditable, avec suggestions et historique des modifications',
-      'Import et export des données, statistiques d’avancement',
-      'Rôles et permissions, authentification complète, abonnements payants avec Stripe',
-      'Routes API Next.js entre l’interface et le service de données',
-    ],
-    stack: [
-      'React',
-      'TypeScript',
-      'Vite',
-      'Ant Design',
-      'Zustand',
-      'ApexCharts',
-      'Stripe',
-      'Next.js 14',
-      'NextUI',
-      'Zod',
-    ],
-  },
-  {
     name: 'Générateur de datasets',
     kind: 'Back-end en microservices',
     period: '2026',
@@ -209,6 +195,33 @@ export const ACADEMIC_PROJECTS: Project[] = [
       'Architecture MVVM avec état exposé en StateFlow et persistance locale Room',
     ],
     stack: ['Kotlin', 'Jetpack Compose', 'Room', 'MVVM', 'Retrofit', 'Hugging Face', 'Llama 3.2'],
+  },
+  {
+    name: 'Dikanteniko',
+    kind: 'Plateforme de gestion de traductions',
+    period: '2023 — 2025',
+    role: 'Projet de soutenance de licence',
+    summary:
+      'Application web pour traduire un produit à plusieurs : projets, langues, contributeurs, rôles et suivi des traductions.',
+    highlights: [
+      'Projets de traduction, langues de référence et invitation de contributeurs',
+      'Table de traductions éditable, avec suggestions et historique des modifications',
+      'Import et export des données, statistiques d’avancement',
+      'Rôles et permissions, authentification complète, abonnements payants avec Stripe',
+      'Routes API Next.js entre l’interface et le service de données',
+    ],
+    stack: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Ant Design',
+      'Zustand',
+      'ApexCharts',
+      'Stripe',
+      'Next.js 14',
+      'NextUI',
+      'Zod',
+    ],
   },
 ];
 

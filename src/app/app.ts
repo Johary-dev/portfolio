@@ -1,6 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
-import { ACADEMIC_PROJECTS, PROFILE, PROJECTS, SKILLS } from './portfolio.data';
+import {
+  ACADEMIC_PROJECTS,
+  EDUCATION,
+  EXPERIENCE,
+  PROFILE,
+  PROJECTS,
+  SKILLS,
+} from './portfolio.data';
 import { ProjectCard } from './project-card/project-card';
 
 type Theme = 'light' | 'dark';
@@ -21,6 +28,10 @@ export class App {
   protected readonly projects = PROJECTS;
   protected readonly academicProjects = ACADEMIC_PROJECTS;
   protected readonly skills = SKILLS;
+  protected readonly timeline = [
+    { label: 'Expérience', items: EXPERIENCE },
+    { label: 'Formation', items: EDUCATION },
+  ];
   protected readonly year = new Date().getFullYear();
 
   protected readonly theme = signal<Theme>(this.initialTheme());

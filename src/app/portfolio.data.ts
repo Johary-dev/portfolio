@@ -23,6 +23,13 @@ export interface Project {
   url?: string;
 }
 
+export interface Milestone {
+  period: string;
+  title: string;
+  place: string;
+  detail?: string;
+}
+
 export interface SkillGroup {
   label: string;
   items: string[];
@@ -30,58 +37,89 @@ export interface SkillGroup {
 
 export const PROFILE: Profile = {
   name: 'Johary Randriamitantsoa',
-  title: 'Développeur full-stack',
+  title: 'Développeur logiciel full-stack',
   location: 'Antananarivo, Madagascar',
   tagline:
     'Je conçois et développe des logiciels de bout en bout, de l’architecture et des API jusqu’à l’interface.',
   about: [
-    'Développeur full-stack avec plus de deux ans d’expérience, je construis des applications métier — CRM omnicanal, plateforme de location, outils de gestion — et j’y intègre des services tiers : paiement Stripe, téléphonie Twilio, stockage AWS S3.',
-    'Mon travail ne s’arrête pas à un framework. Je conçois des API et des modèles de données, je mets en place du cache Redis, je découpe une application en services, et je m’appuie sur les principes SOLID et les design patterns pour que le code continue de bien évoluer. Je m’intéresse particulièrement aux architectures robustes, aux performances et aux systèmes distribués.',
-    'Formé en Master 2 MBDS à l’Université Côte d’Azur (big data, mobilité, intégration de systèmes), après un Master 1 en développement logiciel à l’IT University.',
+    'Développeur logiciel full-stack avec plus de deux ans d’expérience, je prends en charge une fonctionnalité de bout en bout : modélisation des données, API, logique métier, interface et mise en production.',
+    'Je m’appuie sur les principes SOLID, la Clean Architecture et les design patterns pour écrire un code modulaire, testable et facile à faire évoluer. Je porte une attention particulière aux performances (cache Redis, agrégations et pagination côté base de données) et à la sécurité (authentification JWT, permissions par rôle, accès contrôlé aux fichiers).',
+    'J’ai l’habitude d’intégrer des services externes et cloud dans des systèmes existants : stockage objet compatible S3, paiement, téléphonie, messagerie, temps réel. Les architectures distribuées et les microservices sont les sujets sur lesquels je continue de me spécialiser.',
   ],
   email: 'joharyrandriamitantsoa@gmail.com',
   github: 'https://github.com/Johary-dev',
   linkedin: '',
 };
 
+export const EXPERIENCE: Milestone[] = [
+  {
+    period: 'Mars 2025 - aujourd’hui',
+    title: 'Développeur full-stack',
+    place: 'Constellation Group',
+    detail: 'CRM omnicanal intégrant appels VoIP, SMS et e-mails.',
+  },
+  {
+    period: 'Déc. 2023 - janv. 2025',
+    title: 'Développeur full-stack',
+    place: 'YoungDev',
+    detail: 'Plateforme de location en ligne avec paiement Stripe.',
+  },
+];
+
+export const EDUCATION: Milestone[] = [
+  {
+    period: '2025 - 2026',
+    title: 'Master 2 MBDS',
+    place: 'Université Côte d’Azur',
+    detail: 'Big data, mobiquité, intégration de systèmes.',
+  },
+  {
+    period: '2024 - 2025',
+    title: 'Master 1 en développement logiciel',
+    place: 'IT University Andoharanofotsy',
+  },
+];
+
 export const PROJECTS: Project[] = [
   {
     name: 'TwiSales',
     kind: 'Refonte d’un CRM de vente',
-    period: '2025 — aujourd’hui',
+    period: '2025 - aujourd’hui',
     role: 'Développeur full-stack, équipe de 6',
     summary:
-      'Refonte complète d’un CRM : contacts, téléphonie et SMS, emails, pipeline de vente et tableaux de bord, dans un monorepo React et NestJS.',
+      'Refonte complète d’un CRM omnicanal : téléphonie, SMS, e-mails, pipeline de vente et tableaux de bord, dans un monorepo React et NestJS.',
     highlights: [
-      'Module opportunités et pipeline de vente, avec colonnes réorganisables par glisser-déposer',
-      'Gestion des rôles et des permissions côté interface',
-      'Emails et modèles d’emails, paramètres, fiches contacts',
-      'Layout de l’application, tables de données et composants partagés',
-      'Back-end NestJS avec MongoDB, cache Redis et stockage de fichiers sur AWS S3',
-      'Intégration du paiement Stripe',
+      'Téléphonie intégrée avec Twilio : appels directs depuis le CRM, messagerie vocale, enregistrements et historique d’appels avec export',
+      'Messagerie connectée à Microsoft 365 et Google : conversations, recherche, envois programmés et modèles d’e-mails',
+      'Notifications en temps réel avec Socket.io',
+      'Stockage sécurisé des fichiers et des enregistrements sur Scaleway Object Storage (compatible S3), avec accès contrôlé',
+      'Performances : cache Redis sur les services d’e-mails, agrégations MongoDB pour les statistiques et la pagination',
+      'Pipeline de vente en kanban avec glisser-déposer, opportunités et statistiques commerciales',
+      'Rôles et permissions de bout en bout : JWT, règles CASL, menus et actions selon le rôle',
     ],
     stack: [
       'React',
       'TypeScript',
-      'Vite',
-      'Tailwind CSS',
-      'Radix UI',
-      'Zustand',
-      'dnd-kit',
-      'CASL',
-      'Node.js',
       'NestJS',
+      'Node.js',
       'MongoDB',
       'Redis',
-      'AWS S3',
+      'Twilio',
+      'Microsoft Graph',
+      'Google APIs',
+      'Socket.io',
+      'Scaleway S3',
       'Stripe',
+      'CASL',
+      'Tailwind CSS',
+      'Zustand',
       'Turborepo',
     ],
   },
   {
     name: 'Console Twilio',
     kind: 'Back-office de téléphonie',
-    period: '2025 — 2026',
+    period: '2025 - 2026',
     role: 'Développeur full-stack',
     summary:
       'Application d’administration reliée au CRM : numéros de téléphone, consommation d’appels et de SMS, facturation.',
@@ -108,7 +146,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Kiizy',
     kind: 'Location de matériel de puériculture',
-    period: '2024 — 2025',
+    period: '2024 - 2025',
     role: 'Développeur full-stack, équipe de 3',
     summary:
       'Site de location en ligne : catalogue, packs, panier, paiement, cagnottes entre proches et espace client.',
@@ -199,7 +237,7 @@ export const ACADEMIC_PROJECTS: Project[] = [
   {
     name: 'Dikanteniko',
     kind: 'Plateforme de gestion de traductions',
-    period: '2023 — 2025',
+    period: '2023 - 2025',
     role: 'Projet de soutenance de licence',
     summary:
       'Application web pour traduire un produit à plusieurs : projets, langues, contributeurs, rôles et suivi des traductions.',
@@ -232,7 +270,7 @@ export const SKILLS: SkillGroup[] = [
   },
   { label: 'Back-end', items: ['Node.js', 'NestJS', 'Java', 'Spring Boot', 'Laravel'] },
   { label: 'Bases de données', items: ['MongoDB', 'PostgreSQL', 'Oracle', 'Redis'] },
-  { label: 'Cloud et services', items: ['AWS S3', 'Stripe', 'Twilio', 'Socket.io'] },
+  { label: 'Cloud et services', items: ['AWS S3', 'Scaleway', 'Stripe', 'Twilio', 'Socket.io'] },
   {
     label: 'Architecture',
     items: ['SOLID', 'Clean Architecture', 'Design patterns', 'Microservices'],

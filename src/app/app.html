@@ -4,6 +4,7 @@
   <div class="container topbar-inner">
     <a class="brand" href="#top">{{ profile.name }}</a>
     <nav aria-label="Navigation principale">
+      <a href="#parcours">Parcours</a>
       <a href="#projets">Projets</a>
       <a href="#competences">Compétences</a>
       <a href="#contact">Contact</a>
@@ -35,6 +36,29 @@
     <div class="about-text">
       @for (paragraph of profile.about; track paragraph) {
         <p>{{ paragraph }}</p>
+      }
+    </div>
+  </section>
+
+  <section id="parcours" class="container" aria-labelledby="parcours-titre">
+    <h2 id="parcours-titre">Parcours</h2>
+    <div class="timeline">
+      @for (group of timeline; track group.label) {
+        <div class="timeline-group">
+          <h3>{{ group.label }}</h3>
+          <ol>
+            @for (item of group.items; track item.title + item.place) {
+              <li>
+                <span class="timeline-period">{{ item.period }}</span>
+                <strong>{{ item.title }}</strong>
+                <span class="timeline-place">{{ item.place }}</span>
+                @if (item.detail) {
+                  <p>{{ item.detail }}</p>
+                }
+              </li>
+            }
+          </ol>
+        </div>
       }
     </div>
   </section>
